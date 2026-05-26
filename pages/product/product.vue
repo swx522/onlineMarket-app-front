@@ -1033,7 +1033,7 @@
 		}
 	}
 
-	.detail-desc /deep/ img {
+	.detail-desc ::v-deep img {
 		width: 100%;
 		height: auto;
 	}
