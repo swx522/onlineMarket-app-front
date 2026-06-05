@@ -1,95 +1,143 @@
-# mall-app-web
-<p>
-  <a href="#公众号"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E5%85%AC%E4%BC%97%E5%8F%B7-macrozheng-blue.svg" alt="公众号"></a>
-  <a href="#公众号"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E4%BA%A4%E6%B5%81-%E5%BE%AE%E4%BF%A1%E7%BE%A4-2BA245.svg" alt="交流"></a>
-  <a href="https://github.com/macrozheng/mall"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E5%90%8E%E5%8F%B0%E9%A1%B9%E7%9B%AE-mall-blue.svg" alt="后台项目"></a>
-  <a href="https://github.com/macrozheng/mall-admin-web"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE-mall--admin--web-green.svg" alt="前端项目"></a>
-  <a href="https://gitee.com/macrozheng/mall-app-web"><img src="http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/badge/%E7%A0%81%E4%BA%91-%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80-orange.svg" alt="码云"></a>
-</p>
+# onlineMarket 用户前端
 
-## 前言
+`onlineMarket-app-front` 是 onlineMarket 商城系统的用户端前端项目，面向移动端商城场景。项目基于 Vue、Vuex 和 uni-app 开发，并在开源商城项目的基础上进行了移植、适配和功能完善。
 
-该项目为前后端分离项目的前端部分，后端项目`mall`地址：[传送门](https://github.com/macrozheng/mall)。
+本项目采用前后端分离架构，需要配合同一工作区中的 `onlineMarket/mall-portal` 后端服务运行。
 
-## 项目介绍
+## 主要功能
 
-`mall-app-web`是一个电商系统的移动端项目，基于`uni-app`实现。主要包括首页门户、商品推荐、商品搜索、商品展示、购物车、订单流程、会员中心、客户服务、帮助中心等功能。
+- 首页内容、商品推荐、新品和热门商品
+- 商品分类、搜索、列表和详情
+- 品牌推荐、品牌详情和品牌关注
+- 购物车管理和订单确认
+- 订单创建、支付、取消、收货和删除
+- 用户登录、注册和个人中心
+- 收货地址管理
+- 优惠券领取与查看
+- 商品收藏、浏览记录和品牌关注记录
 
-### 项目演示
+## 技术栈
 
-项目在线演示地址：[https://www.macrozheng.com/app/](https://www.macrozheng.com/app/)  
-
-### 效果展示
-
-![](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/project/mall_app_web_preview_01.png)![](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/project/mall_app_web_preview_02.png)
-
-![](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/project/mall_app_web_preview_03.png)![](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/project/mall_app_web_preview_04.png)
-
-![](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/project/mall_app_web_preview_05.png)![](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/project/mall_app_web_preview_06.png)
-
-![](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/project/mall_app_web_preview_07.png)![](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/project/mall_app_web_preview_08.png)
-
-![](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/project/mall_app_web_preview_09.png)![](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/project/mall_app_web_preview_10.png)
+| 技术 | 用途 |
+| --- | --- |
+| Vue | 页面和组件开发 |
+| Vuex | 登录状态及用户信息管理 |
+| uni-app | 多端应用开发框架 |
+| luch-request | HTTP 请求封装 |
+| HBuilderX | 项目开发、调试和构建 |
 
 
+## 项目结构
 
-### 技术选型
-
-| 技术         | 说明             | 官网                                    |
-| ------------ | ---------------- | --------------------------------------- |
-| Vue          | 核心前端框架     | https://vuejs.org                       |
-| Vuex         | 全局状态管理框架 | https://vuex.vuejs.org                  |
-| uni-app      | 移动端前端框架   | https://uniapp.dcloud.io                |
-| mix-mall     | 电商项目模板     | https://ext.dcloud.net.cn/plugin?id=200 |
-| luch-request | HTTP请求框架     | https://github.com/lei-mu/luch-request  |
-
-### 项目结构
-
-``` lua
-src -- 源码目录
-├── api -- luch-request网络请求定义
-├── components -- 通用组件封装
-├── js_sdk -- 第三方sdk源码
-├── static -- 图片等静态资源
-├── store -- vuex的状态管理
-├── utils -- 工具类
-└── pages -- 前端页面
-    ├── address -- 地址管理页
-    ├── brand -- 商品品牌页
-    ├── cart -- 购物车页
-    ├── category -- 商品分类页
-    ├── coupon -- 优惠券页
-    ├── index -- 首页
-    ├── money -- 支付页
-    ├── notice -- 通知页
-    ├── order -- 订单页
-    ├── product -- 商品页
-    ├── public -- 登录页
-    ├── set -- 设置页
-    ├── user -- 会员页
-    └── userinfo -- 会员信息页
+```text
+onlineMarket-app-front
+├── api/                  # 商城业务接口定义
+├── components/           # 公共组件
+├── images/               # 项目图片资源
+├── js_sdk/               # 第三方 SDK，包含 luch-request
+├── pages/                # 页面模块
+│   ├── address/          # 收货地址
+│   ├── brand/            # 品牌
+│   ├── cart/             # 购物车
+│   ├── category/         # 商品分类
+│   ├── coupon/           # 优惠券
+│   ├── index/            # 首页
+│   ├── money/            # 支付
+│   ├── notice/           # 通知
+│   ├── order/            # 订单
+│   ├── product/          # 商品
+│   ├── public/           # 登录与注册
+│   ├── set/              # 设置
+│   ├── user/             # 用户中心
+│   └── userinfo/         # 用户资料
+├── static/               # 图标、字体等静态资源
+├── store/                # Vuex 状态管理
+├── utils/                # 请求配置和工具函数
+├── App.vue               # 应用入口组件
+├── main.js               # Vue 初始化入口
+├── manifest.json         # uni-app 应用配置
+└── pages.json            # 页面路由和导航配置
 ```
 
-## 搭建步骤
+## 开发环境
 
-- 本项目使用了`uni-app`专用开发工具`HBuilder X`（App开发版）开发，下载地址：https://www.dcloud.io/hbuilderx.html
-- 该项目为前后端分离项目，访问本地访问接口需搭建后台环境，搭建请参考后端项目[传送门](https://github.com/macrozheng/mall)；
-- 注意由于`mall-app-web`中的接口都在`mall-portal`模块中，所以一定要启动该模块；
-- 访问在线接口无需搭建后台环境，只需将`utils/appConfig.js`文件中的`API_BASE_URL`改为线上地址即可：https://portal-api.macrozheng.com
-- 克隆源代码到本地，使用`HBuilder X`打开；
-- 在`HBuilder X`中使用`运行->运行到浏览器->Chrome`运行项目，运行成功后会自动打开下面地址（将浏览器改为手机模式）：http://localhost:8060
-- 如果浏览器没有启动的话，可以直接访问如下地址访问：http://localhost:8060
+运行项目前请准备：
 
-## 公众号
+1. HBuilderX，建议安装 App 开发版。
+2. 已正确配置并启动的 `onlineMarket/mall-portal` 服务。
+3. 后端开发环境所需的 MySQL、Redis、MongoDB 和 RabbitMQ。
 
-学习不走弯路，关注公众号「**macrozheng**」，回复「**学习路线**」，获取mall项目专属学习路线！
+后端默认使用 `dev` 配置，服务端口为 `8085`。数据库及中间件连接信息位于：
 
-加微信群交流，公众号后台回复「**加群**」即可。
+```text
+../onlineMarket/mall-portal/src/main/resources/application-dev.yml
+```
 
-![公众号图片](http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/banner/qrcode_for_macrozheng_258.jpg)
+## 接口配置
+
+用户端请求地址配置在 `utils/appConfig.js`：
+
+```js
+export const API_BASE_URL = 'http://localhost:8085';
+export const USE_ALIPAY = false;
+```
+
+- `API_BASE_URL`：商城用户端后端服务地址。
+- `USE_ALIPAY`：是否启用支付宝支付。默认关闭，此时支付页面使用项目内的模拟支付流程。
+
+如果后端部署在其他主机或端口，需要同步修改 `API_BASE_URL`。在手机、模拟器或局域网设备上调试时，不能使用设备自身的 `localhost`，应改为后端所在计算机可访问的局域网 IP。
+
+## 本地运行
+
+1. 启动后端项目中的 `mall-portal` 模块，确认 `http://localhost:8085` 可以访问。
+2. 打开 HBuilderX，选择“文件 -> 导入 -> 从本地目录导入”。
+3. 选择本目录 `onlineMarket-app-front`。
+4. 选择“运行 -> 运行到浏览器 -> Chrome”。
+5. H5 默认开发端口为 `8060`，运行后访问：
+
+```text
+http://localhost:8060
+```
+
+建议在浏览器开发者工具中切换到移动设备模式进行调试。
+
+## 多端配置
+
+项目的 `manifest.json` 已包含 H5、App 和微信小程序相关配置，但微信小程序 `appid` 当前为空。构建到微信小程序或 App 前，需要在 HBuilderX 中补充对应平台的应用标识、权限和发行配置。
+
+当前项目主要按 H5 环境进行本地联调，其他平台发布前应重点检查：
+
+- 后端接口域名和 HTTPS 配置
+- 小程序合法请求域名
+- App 网络与系统权限
+- 静态资源和外部字体的可访问性
+- 支付平台相关参数
+
+## 登录与请求说明
+
+- 登录成功后，用户信息和 Token 会保存在 uni-app 本地存储中。
+- 请求工具会自动将 Token 写入 `Authorization` 请求头。
+- 接口返回 `401` 时，页面会提示用户重新登录。
+- 业务接口统一定义在 `api/` 目录，请优先在对应模块中维护接口，避免在页面内直接拼接请求。
+
+## 常见问题
+
+### 页面能够打开，但没有商品数据
+
+检查 `mall-portal` 是否已经启动，以及 `utils/appConfig.js` 中的 `API_BASE_URL` 是否与后端地址一致。同时确认 MySQL、Redis、MongoDB 和 RabbitMQ 的连接配置正确。
+
+### 浏览器提示跨域错误
+
+确认后端允许当前 H5 地址访问。开发环境默认前端地址为 `http://localhost:8060`，后端地址为 `http://localhost:8085`。
+
+### 登录后仍提示未登录
+
+检查登录接口是否正常返回 Token，并确认浏览器本地存储中存在 `token`。请求头格式应与 `mall-portal` 的 JWT 配置保持一致。
+
+### 真机无法访问本地后端
+
+将 `API_BASE_URL` 中的 `localhost` 改为后端计算机的局域网 IP，并确保设备与计算机处于同一网络、端口未被防火墙拦截。
 
 ## 许可证
 
-[Apache License 2.0](https://github.com/macrozheng/mall-app-web/blob/master/LICENSE)
-
-Copyright (c) 2020-2024 macrozheng
+本项目使用 Apache License 2.0，具体内容见根目录下的 `LICENSE` 文件。
