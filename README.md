@@ -15,6 +15,7 @@
 - 收货地址管理
 - 优惠券领取与查看
 - 商品收藏、浏览记录和品牌关注记录
+- 智能客服助手（AI 对话，支持真实订单/商品/优惠券查询）
 
 ## 技术栈
 
@@ -32,7 +33,11 @@
 ```text
 onlineMarket-app-front
 ├── api/                  # 商城业务接口定义
+│   ├── assistant.js      # 智能客服助手接口
+│   └── ...
 ├── components/           # 公共组件
+│   ├── ai-assistant/     # 智能客服助手对话组件
+│   └── ...
 ├── images/               # 项目图片资源
 ├── js_sdk/               # 第三方 SDK，包含 luch-request
 ├── pages/                # 页面模块
@@ -137,6 +142,34 @@ http://localhost:8060
 ### 真机无法访问本地后端
 
 将 `API_BASE_URL` 中的 `localhost` 改为后端计算机的局域网 IP，并确保设备与计算机处于同一网络、端口未被防火墙拦截。
+
+## 智能客服助手
+
+页面右下角有悬浮的智能客服按钮，点击可展开聊天面板。
+
+### 功能说明
+
+- **自动登录识别**：登录后自动携带会员 ID，可查询该用户的真实订单、积分、优惠券
+- **多轮对话**：自动维持会话上下文，支持连续追问
+- **快捷问题**：未对话时展示常见问题入口，一键提问
+- **服务降级**：后端 LLM 不可用时自动显示兜底回复
+
+### 后端依赖
+
+智能客服需要 `mall-assistant` 模块运行。默认 `mall-assistant` 端口与 `mall-portal` 同为 8085，需要将两个服务配置到不同端口。建议：
+
+- `mall-portal`：8085（保持不变）
+- `mall-assistant`：8086（修改其 `application.yml` 中的 `server.port`）
+
+同时修改 `api/assistant.js` 中的请求配置，指向 `mall-assistant` 的实际地址。
+
+### 组件文件
+
+| 文件 | 说明 |
+|------|------|
+| `api/assistant.js` | 封装 `/assistant/chat` 和 `/assistant/history` 接口 |
+| `components/ai-assistant/ai-assistant.vue` | 悬浮按钮 + 全屏聊天面板 |
+| `App.vue` | 全局挂载 AI 助手组件 |
 
 ## 许可证
 
