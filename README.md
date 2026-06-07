@@ -156,9 +156,7 @@ http://localhost:8060
 
 ### 后端依赖
 
-智能客服需要 `mall-assistant` 模块运行，默认端口 **8086**，与 `mall-portal`（8085）已错开，可直接同时启动。
-
-接口地址配置在 `utils/appConfig.js` 的 `ASSISTANT_BASE_URL` 中。
+智能客服需要 `mall-assistant` 模块运行（端口 **8086**），接口地址配置在 `utils/appConfig.js` 的 `ASSISTANT_BASE_URL` 中。
 
 ### 组件文件
 
