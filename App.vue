@@ -1,4 +1,11 @@
+<template>
+	<view>
+		<ai-assistant />
+	</view>
+</template>
+
 <script>
+	import aiAssistant from '@/components/ai-assistant/ai-assistant.vue'
 	/**
 	 * vuex管理登陆状态，具体可以参考官方登陆模板示例
 	 */
@@ -6,6 +13,9 @@
 		mapMutations
 	} from 'vuex';
 	export default {
+		components: {
+			aiAssistant
+		},
 		methods: {
 			...mapMutations(['login'])
 		},
@@ -20,7 +30,7 @@
 					}
 				});
 			}
-			
+
 		},
 		onShow: function() {
 			console.log('App Show')
@@ -333,7 +343,6 @@
 	.icon-dianzan-ash:before {
 		content: "\e617";
 	}
-
 
 
 
