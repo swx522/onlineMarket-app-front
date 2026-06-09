@@ -5,13 +5,10 @@
 		<view class="right-top-sign"></view>
 		<!-- 设置白色背景防止软键盘把下部绝对定位元素顶上来盖住输入框等 -->
 		<view class="wrapper">
-			<view class="empty">
-				<image src="/static/qrcode_for_macrozheng_258.jpg" mode="aspectFit"></image>
-				<view class="empty-tips">
-					扫描上方二维码<view class="navigator">关注公众号</view>，
-				</view>
-				<view class="empty-tips">
-					回复<view class="navigator">会员</view>获取体验账号。
+t			<view class="empty">
+					<view class="empty-tips">
+						暂无开放注册，请联系管理员
+					</view>
 				</view>
 			</view>
 		</view>
