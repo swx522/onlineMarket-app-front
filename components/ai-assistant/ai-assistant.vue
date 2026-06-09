@@ -2,7 +2,7 @@
 	<view class="ai-assistant">
 		<!-- 悬浮按钮 -->
 		<view class="float-btn" :class="{ 'btn-hide': panelOpen }" @click="openPanel">
-			<text class="float-icon yticon icon-iconfontweixin"></text>
+			<text class="float-text">AI</text>
 		</view>
 
 		<!-- 聊天面板 -->
@@ -173,7 +173,7 @@
 			opacity: 0;
 		}
 
-		.float-icon {
+		.float-text {
 			font-size: 50upx;
 			color: #fff;
 		}

@@ -1,11 +1,9 @@
 <template>
 	<view>
-		<ai-assistant />
 	</view>
 </template>
 
 <script>
-	import aiAssistant from '@/components/ai-assistant/ai-assistant.vue'
 	/**
 	 * vuex管理登陆状态，具体可以参考官方登陆模板示例
 	 */
@@ -14,7 +12,6 @@
 	} from 'vuex';
 	export default {
 		components: {
-			aiAssistant
 		},
 		methods: {
 			...mapMutations(['login'])

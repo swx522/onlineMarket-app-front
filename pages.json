@@ -1,5 +1,11 @@
 {
 	"pages": [
+		{
+			"path": "pages/assistant/assistant",
+			"style": {
+				"navigationBarTitleText": "AI助手"
+			}
+		},
 
 		{
 			"path": "pages/index/index",
@@ -296,6 +302,12 @@
 				"iconPath": "static/tab-my.png",
 				"selectedIconPath": "static/tab-my-current.png",
 				"text": "我的"
+			},
+			{
+				"pagePath": "pages/assistant/assistant",
+				"iconPath": "static/tab-home.png",
+				"selectedIconPath": "static/tab-cate-current.png",
+				"text": "AI"
 			}
 		]
 	}
