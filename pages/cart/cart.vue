@@ -119,7 +119,7 @@
 			},
 			//监听image加载完成
 			onImageLoad(key, index) {
-				this.$set(this[key][index], 'loaded', 'loaded');
+				this[key][index].loaded = 'loaded';
 			},
 			//监听image加载失败
 			onImageError(key, index) {

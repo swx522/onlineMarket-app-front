@@ -11,7 +11,7 @@
 			<view class="con">
 				<view class="left">
 					<text class="title">{{item.name}}</text>
-					<text class="time">有效期至{{item.endTime | formatDateTime}}</text>
+					<text class="time">有效期至{{ formatDateTime(item.endTime) }}</text>
 				</view>
 				<view class="right">
 					<text class="price">{{item.amount}}</text>
@@ -21,7 +21,7 @@
 				<view class="circle l"></view>
 				<view class="circle r"></view>
 			</view>
-			<text class="tips">{{item.useType | formatCouponUseType}}</text>
+			<text class="tips">{{ formatCouponUseType(item.useType) }}</text>
 		</view>
 	</view>
 </template>
@@ -58,7 +58,7 @@
 		onLoad() {
 			this.loadData();
 		},
-		filters:{
+		methods: {
 			formatDateTime(time) {
 				if (time == null || time === '') {
 					return 'N/A';
@@ -76,8 +76,7 @@
 				}
 				return null;
 			},
-		},
-		methods: {
+
 			loadData(){
 				fetchMemberCouponList(this.useStatus).then(response=>{
 					this.couponList = response.data;

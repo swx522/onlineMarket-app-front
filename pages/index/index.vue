@@ -70,7 +70,7 @@
 			<image src="/static/icon_flash_promotion.png"></image>
 			<view class="tit-box">
 				<text class="tit">秒杀专区</text>
-				<text class="tit2">下一场 {{homeFlashPromotion.nextStartTime | formatTime}} 开始</text>
+				<text class="tit2">下一场 {{ formatTime(homeFlashPromotion.nextStartTime) }} 开始</text>
 			</view>
 			<view class="tit-box">
 				<text class="tit2" style="text-align: right;">本场结束剩余：</text>
@@ -244,7 +244,7 @@
 				}
 			}
 		},
-		filters: {
+		methods: {
 			formatTime(time) {
 				if (time == null || time === '') {
 					return 'N/A';
@@ -252,8 +252,7 @@
 				let date = new Date(time);
 				return formatDate(date, 'hh:mm:ss')
 			},
-		},
-		methods: {
+
 			/**
 			 * 加载数据
 			 */

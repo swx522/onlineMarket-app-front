@@ -196,7 +196,7 @@
 					<view class="con">
 						<view class="left">
 							<text class="title">{{item.name}}</text>
-							<text class="time">有效期至{{item.endTime | formatDateTime}}</text>
+							<text class="time">有效期至{{ formatDateTime(item.endTime) }}</text>
 						</view>
 						<view class="right">
 							<text class="price">{{item.amount}}</text>
@@ -206,7 +206,7 @@
 						<view class="circle l"></view>
 						<view class="circle r"></view>
 					</view>
-					<text class="tips">{{item.useType | formatCouponUseType}}</text>
+					<text class="tips">{{ formatCouponUseType(item.useType) }}</text>
 				</view>
 			</view>
 		</view>
@@ -305,7 +305,7 @@
 		computed: {
 			...mapState(['hasLogin'])
 		},
-		filters: {
+		methods: {
 			formatDateTime(time) {
 				if (time == null || time === '') {
 					return 'N/A';
@@ -323,8 +323,7 @@
 				}
 				return null;
 			},
-		},
-		methods: {
+
 			async loadData(id) {
 				fetchProductDetail(id).then(response => {
 					this.product = response.data.product;
@@ -386,11 +385,11 @@
 				let list = this.specChildList;
 				list.forEach(item => {
 					if (item.pid === pid) {
-						this.$set(item, 'selected', false);
+						item.selected = false;
 					}
 				})
 
-				this.$set(list[index], 'selected', true);
+				list[index].selected = true;
 				//存储已选择
 				/**
 				 * 修复选择规格存储错误
@@ -530,7 +529,7 @@
 				this.specList.forEach(item => {
 					for (let cItem of this.specChildList) {
 						if (cItem.pid === item.id) {
-							this.$set(cItem, 'selected', true);
+							cItem.selected = true;
 							this.specSelected.push(cItem);
 							this.changeSpecInfo();
 							break;
@@ -1033,7 +1032,7 @@
 		}
 	}
 
-	.detail-desc ::v-deep img {
+	.detail-desc :deep(img) {
 		width: 100%;
 		height: auto;
 	}

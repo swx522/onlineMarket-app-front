@@ -27,7 +27,7 @@
 				<image :src="item.productPic"></image>
 				<view class="right">
 					<text class="title clamp">{{item.productName}}</text>
-					<text class="spec">{{item.productAttr | formatProductAttr}}</text>
+					<text class="spec">{{ formatProductAttr(item.productAttr) }}</text>
 					<text class="promotion clamp">{{item.promotionMessage}}</text>
 					<view class="price-box">
 						<text class="price">￥{{item.price}}</text>
@@ -105,7 +105,7 @@
 					<view class="con">
 						<view class="left">
 							<text class="title">{{item.name}}</text>
-							<text class="time">有效期至{{item.endTime | formatDateTime}}</text>
+							<text class="time">有效期至{{ formatDateTime(item.endTime) }}</text>
 						</view>
 						<view class="right">
 							<text class="price">{{item.amount}}</text>
@@ -115,7 +115,7 @@
 						<view class="circle l"></view>
 						<view class="circle r"></view>
 					</view>
-					<text class="tips">{{item.useType | formatCouponUseType}}</text>
+					<text class="tips">{{ formatCouponUseType(item.useType) }}</text>
 				</view>
 			</view>
 		</view>
@@ -155,7 +155,7 @@
 			console.log(this.cartIds);
 			this.loadData();
 		},
-		filters: {
+		methods: {
 			formatProductAttr(jsonAttr) {
 				let attrArr = JSON.parse(jsonAttr);
 				let attrStr = '';
@@ -184,8 +184,7 @@
 				}
 				return null;
 			},
-		},
-		methods: {
+
 			//生成确认单信息
 			async loadData() {
 				generateConfirmOrder(JSON.stringify(this.cartIds)).then(response => {

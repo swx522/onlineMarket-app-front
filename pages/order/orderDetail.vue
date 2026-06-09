@@ -30,7 +30,7 @@
 				<image :src="item.productPic"></image>
 				<view class="right">
 					<text class="title clamp">{{item.productName}}</text>
-					<text class="spec">{{item.productAttr | formatProductAttr}}</text>
+					<text class="spec">{{ formatProductAttr(item.productAttr) }}</text>
 					<text class="promotion clamp">{{item.promotionName}}</text>
 					<view class="price-box">
 						<text class="price">￥{{item.productPrice}}</text>
@@ -76,11 +76,11 @@
 			</view>
 			<view class="yt-list-cell b-b">
 				<text class="cell-tit clamp">提交时间</text>
-				<text class="cell-tip">{{order.createTime | formatDateTime}}</text>
+				<text class="cell-tip">{{ formatDateTime(order.createTime) }}</text>
 			</view>
 			<view class="yt-list-cell b-b">
 				<text class="cell-tit clamp">支付方式</text>
-				<text class="cell-tip">{{order.payType | formatPayType}}</text>
+				<text class="cell-tip">{{ formatPayType(order.payType) }}</text>
 			</view>
 			<view class="yt-list-cell b-b" v-if="order.status==1||order.status==2||order.status==3">
 				<text class="cell-tit clamp">实付金额</text>
@@ -88,7 +88,7 @@
 			</view>
 			<view class="yt-list-cell b-b" v-if="order.status==1||order.status==2||order.status==3">
 				<text class="cell-tit clamp">付款时间</text>
-				<text class="cell-tip">{{order.paymentTime | formatDateTime}}</text>
+				<text class="cell-tip">{{ formatDateTime(order.paymentTime) }}</text>
 			</view>
 		</view>
 
@@ -138,7 +138,7 @@
 			this.orderId = option.orderId;
 			this.loadData();
 		},
-		filters: {
+		methods: {
 			formatProductAttr(jsonAttr) {
 				let attrArr = JSON.parse(jsonAttr);
 				let attrStr = '';
@@ -167,8 +167,7 @@
 				}
 				return null;
 			},
-		},
-		methods: {
+
 			//生成确认单信息
 			async loadData() {
 				fetchOrderDetail(this.orderId).then(response => {

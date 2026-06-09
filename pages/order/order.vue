@@ -16,8 +16,8 @@
 					<!-- 订单列表 -->
 					<view v-for="(item,index) in orderList" :key="index" class="order-item">
 						<view class="i-top b-b">
-							<text class="time" @click="showOrderDetail(item.id)">{{item.createTime | formatDateTime}}</text>
-							<text class="state" :style="{color: '#fa436a'}">{{item.status | formatStatus}}</text>
+							<text class="time" @click="showOrderDetail(item.id)">{{ formatDateTime(item.createTime) }}</text>
+							<text class="state" :style="{color: '#fa436a'}">{{ formatStatus(item.status) }}</text>
 							<text v-if="item.status===3||item.status===4" class="del-btn yticon icon-iconfontshanchu1" @click="deleteOrder(item.id)"></text>
 						</view>
 						<view class="goods-box-single" v-for="(orderItem, itemIndex) in item.orderItemList"
@@ -25,7 +25,7 @@
 							<image class="goods-img" :src="orderItem.productPic" mode="aspectFill"></image>
 							<view class="right">
 								<text class="title clamp">{{orderItem.productName}}</text>
-								<text class="attr-box">{{orderItem.productAttr | formatProductAttr}} x {{orderItem.productQuantity}}</text>
+								<text class="attr-box">{{ formatProductAttr(orderItem.productAttr) }} x {{orderItem.productQuantity}}</text>
 								<text class="price">{{orderItem.productPrice}}</text>
 							</view>
 						</view>
@@ -123,7 +123,7 @@
 			// #endif
 
 		},
-		filters: {
+		methods: {
 			formatStatus(status) {
 				let statusTip = '';
 				switch (+status) {
@@ -163,8 +163,7 @@
 				let date = new Date(time);
 				return formatDate(date, 'yyyy-MM-dd hh:mm:ss')
 			},
-		},
-		methods: {
+
 			//获取订单列表
 			loadData(type='refresh') {
 				if(type=='refresh'){

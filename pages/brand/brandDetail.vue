@@ -91,7 +91,7 @@
 		},
 		methods: {
 			imageOnLoad(key, index) {
-				this.$set(this.data[key][index], 'loaded', 'loaded');
+				this.data[key][index].loaded = 'loaded';
 			},
 			//收藏
 			favorite() {

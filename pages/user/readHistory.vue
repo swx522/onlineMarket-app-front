@@ -12,7 +12,7 @@
 					<text class="title2">{{item.productSubTitle}}</text>
 					<view class="hor-txt">
 						<text class="price">￥{{item.productPrice}}</text>
-						<text class="time">{{item.createTime | formatDateTime}}</text>
+						<text class="time">{{ formatDateTime(item.createTime) }}</text>
 					</view>
 				</view>
 			</view>
@@ -77,7 +77,7 @@
 			}
 		},
 		// #endif
-		filters: {
+		methods: {
 			formatDateTime(time) {
 				if (time == null || time === '') {
 					return 'N/A';
@@ -85,8 +85,7 @@
 				let date = new Date(time);
 				return formatDate(date, 'yyyy-MM-dd hh:mm:ss')
 			},
-		},
-		methods: {
+
 			//加载商品 ，带下拉刷新和上滑加载
 			async loadData(type = 'add', loading) {
 				//没有更多直接返回

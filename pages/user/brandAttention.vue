@@ -72,7 +72,7 @@
 			}
 		},
 		// #endif
-		filters: {
+		methods: {
 			formatDateTime(time) {
 				if (time == null || time === '') {
 					return 'N/A';
@@ -80,8 +80,7 @@
 				let date = new Date(time);
 				return formatDate(date, 'yyyy-MM-dd hh:mm:ss')
 			},
-		},
-		methods: {
+
 			//加载商品 ，带下拉刷新和上滑加载
 			async loadData(type = 'add', loading) {
 				//没有更多直接返回

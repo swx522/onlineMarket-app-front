@@ -13,8 +13,7 @@
 					<text>推荐使用支付宝支付</text>
 				</view>
 				<label class="radio">
-					<radio value="" color="#fa436a" :checked='payType == 1' />
-					</radio>
+					<radio value="" color="#fa436a" :checked='payType == 1' ></radio>
 				</label>
 			</view>
 			<view class="type-item b-b" @click="changePayType(2)">
@@ -23,8 +22,7 @@
 					<text class="tit">微信支付</text>
 				</view>
 				<label class="radio">
-					<radio value="" color="#fa436a" :checked='payType == 2' />
-					</radio>
+					<radio value="" color="#fa436a" :checked='payType == 2' ></radio>
 				</label>
 			</view>
 		</view>
