@@ -34,6 +34,15 @@
 			<text @click="navToLogin">马上登录</text>
 		</view>
 	</view>
+
+		<view class="code-modal" v-if="showCodeModal" @click="showCodeModal = false">
+			<view class="modal-box" @click.stop>
+				<text class="modal-title">验证码</text>
+				<text class="modal-code">{{ codeValue }}</text>
+				<text class="modal-tip">开发环境直接展示，生产环境请接入短信服务</text>
+				<button class="modal-btn" @click="fillCode">填入并关闭</button>
+			</view>
+		</view>
 </template>
 
 <script>
@@ -50,6 +59,8 @@ export default {
 			smsSending: false,
 			smsSeconds: 0,
 			smsTimer: null
+t			showCodeModal: false,
+				codeValue: '',
 		}
 	},
 	computed: {
@@ -68,17 +79,28 @@ export default {
 			}
 			this.smsSending = true;
 			this.smsSeconds = 60;
-			getAuthCode(this.telephone).then(() => {
-				uni.showToast({ title: '验证码已发送', icon: 'none' });
+			getAuthCode(this.telephone).then((res) => {
+				const code = res.data || res;
+				this.codeValue = code; this.showCodeModal = true;
 			}).catch(() => {
 				this.smsSending = false;
 				clearInterval(this.smsTimer);
+t		},
+			fillCode() {
+				this.authCode = this.codeValue;
+				this.showCodeModal = false;
+			},
 			});
 			this.smsTimer = setInterval(() => {
 				this.smsSeconds--;
 				if (this.smsSeconds <= 0) {
 					this.smsSending = false;
 					clearInterval(this.smsTimer);
+t		},
+			fillCode() {
+				this.authCode = this.codeValue;
+				this.showCodeModal = false;
+			},
 				}
 			}, 1000);
 		},
@@ -101,6 +123,11 @@ export default {
 	},
 	beforeUnmount() {
 		if (this.smsTimer) clearInterval(this.smsTimer);
+t		},
+			fillCode() {
+				this.authCode = this.codeValue;
+				this.showCodeModal = false;
+			},
 	}
 }
 </script>
@@ -239,4 +266,17 @@ export default {
 		border-radius: 50%;
 		padding: 180upx;
 	}
+.code-modal {
+	position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+	background: rgba(0,0,0,0.5); z-index: 9999;
+	display: flex; align-items: center; justify-content: center;
+}
+.modal-box {
+	width: 500upx; background: #fff; border-radius: 16upx;
+	padding: 60upx 40upx; text-align: center;
+}
+.modal-title { font-size: 32upx; color: #333; display: block; margin-bottom: 24upx; }
+.modal-code { font-size: 72upx; font-weight: bold; color: #fa436a; display: block; letter-spacing: 16upx; margin-bottom: 16upx; }
+.modal-tip { font-size: 22upx; color: #999; display: block; margin-bottom: 40upx; }
+.modal-btn { width: 100%; height: 76upx; line-height: 76upx; background: #fa436a; color: #fff; border-radius: 38upx; font-size: 28upx; }
 </style>
